@@ -118,7 +118,7 @@ nav.scrolled{background:rgba(8,8,8,.95);padding:12px 40px;border-bottom:1px soli
 /* HIGHLIGHTS */
 .hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
 .hl-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:30px;position:relative;overflow:hidden;transition:.4s;}
-.hl-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(46,125,50,.07),rgba(198,40,40,.07));opacity:0;transition:.4s;}
+.hl-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(46,125,50,.07),rgba(198,40,40,.07));opacity:0;transition:.4s;pointer-events:none;}
 .hl-card:hover{transform:translateY(-8px);border-color:rgba(67,160,71,.3);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 40px rgba(67,160,71,.08);}
 .hl-card:hover::after{opacity:1;}
 .hl-badge{position:absolute;top:18px;right:18px;background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;font-size:.6rem;font-weight:700;letter-spacing:1px;padding:3px 10px;border-radius:20px;}
@@ -196,7 +196,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
 .modal-desc{font-size:.83rem;color:rgba(255,255,255,.55);line-height:1.8;}
 
 /* WATCH BUTTON */
-.watch-btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 22px;background:rgba(229,57,53,.12);border:1px solid rgba(229,57,53,.35);color:var(--red-bright);border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:.3s;width:auto;}
+.watch-btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 22px;background:rgba(229,57,53,.12);border:1px solid rgba(229,57,53,.35);color:var(--red-bright);border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:.3s;width:auto;position:relative;z-index:2;}
 .watch-btn:hover{background:linear-gradient(135deg,var(--red),var(--red-bright));color:#fff;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 20px rgba(229,57,53,.3);}
 
 /* GALLERY PLAY ICON */
