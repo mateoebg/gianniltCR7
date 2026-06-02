@@ -180,6 +180,29 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
 .ft-bot{border-top:1px solid rgba(255,255,255,.04);padding-top:22px;color:rgba(255,255,255,.18);font-size:.72rem;letter-spacing:1px;}
 .ft-bot span{color:var(--red-bright);}
 
+/* VIDEO MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;}
+.modal-overlay.open{opacity:1;visibility:visible;}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);cursor:pointer;}
+.modal-box{position:relative;width:100%;max-width:880px;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:24px;overflow:hidden;transform:scale(.82) translateY(50px);transition:transform .45s cubic-bezier(.34,1.56,.64,1);z-index:1;}
+.modal-overlay.open .modal-box{transform:scale(1) translateY(0);}
+.modal-close{position:absolute;top:14px;right:14px;z-index:10;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.15);color:#fff;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;transition:.25s;}
+.modal-close:hover{background:var(--red);border-color:var(--red);}
+.modal-video{position:relative;padding-bottom:56.25%;background:#000;}
+.modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.modal-info{padding:26px 30px 30px;}
+.modal-tag{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--green-light);margin-bottom:8px;}
+.modal-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;margin-bottom:10px;}
+.modal-desc{font-size:.83rem;color:rgba(255,255,255,.55);line-height:1.8;}
+
+/* WATCH BUTTON */
+.watch-btn{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 22px;background:rgba(229,57,53,.12);border:1px solid rgba(229,57,53,.35);color:var(--red-bright);border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:.3s;width:auto;}
+.watch-btn:hover{background:linear-gradient(135deg,var(--red),var(--red-bright));color:#fff;border-color:transparent;transform:translateY(-2px);box-shadow:0 8px 20px rgba(229,57,53,.3);}
+
+/* GALLERY PLAY ICON */
+.gal-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:#111;font-size:1.3rem;padding-left:4px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;}
+.gal-item:hover .gal-play{transform:translate(-50%,-50%) scale(1);box-shadow:0 8px 30px rgba(0,0,0,.5);}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .timeline::before{left:20px;}
@@ -497,6 +520,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
         <div class="hl-num">5</div>
         <div class="hl-title">Champions-League-Siege</div>
         <p class="hl-desc">Man United 2008, Real Madrid 2014, 2016, 2017, 2018. Kein Feldspieler hat mehr UCL-Titel gewonnen.</p>
+        <button class="watch-btn" onclick="openVideo('LJvsGMS_NKM','Bicycle Kick vs. Juventus – UCL 2018','Champions League · Viertelfinal-Hinspiel','Der vielleicht schönste Treffer in der Geschichte der Champions League: Ronaldos Fallrückzieher in Turin ließ sogar Juventus-Fans applaudieren.')"><i class="fas fa-play"></i> Video ansehen</button>
       </div>
       <div class="hl-card rv" style="transition-delay:.1s">
         <span class="hl-badge">WELTREKORD</span>
@@ -504,12 +528,14 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
         <div class="hl-num">136</div>
         <div class="hl-title">Länderspieltore</div>
         <p class="hl-desc">Unangefochtener Weltrekord – kein Spieler in der Geschichte des Fußballs erzielte mehr internationale Tore.</p>
+        <button class="watch-btn" onclick="openVideo('ZCVacsj7rCs','Ronaldo bricht den Weltrekord','WM-Qualifikation · Portugal','Der historische Moment, als Ronaldo den Weltrekord für die meisten Länderspieltore der Geschichte brach. Gänsehaut pur.')"><i class="fas fa-play"></i> Video ansehen</button>
       </div>
       <div class="hl-card rv" style="transition-delay:.2s">
         <div class="hl-ico">⭐</div>
         <div class="hl-num">5</div>
         <div class="hl-title">Ballon d'Or</div>
         <p class="hl-desc">2008, 2013, 2014, 2016 und 2017. Jahrelang das Duell mit Messi an der Weltspitze – fünfmal siegreich.</p>
+        <button class="watch-btn" onclick="openVideo('lxD2MDw1g8s','The GOAT Legacy Compilation','Karriere 2002–2024 · Alle Vereine','Die komplette GOAT-Legacy: Ronaldos atemberaubende Tore, Skills und unvergessliche Karriere-Momente in einer epischen Compilation.')"><i class="fas fa-play"></i> Video ansehen</button>
       </div>
       <div class="hl-card rv" style="transition-delay:.3s">
         <span class="hl-badge">MEILENSTEIN</span>
@@ -517,12 +543,14 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
         <div class="hl-num">900<span class="unit">+</span></div>
         <div class="hl-title">Karrieretore</div>
         <p class="hl-desc">Über 900 Tore für Klub und Nationalteam kombiniert – ein schier unvorstellbarer Wert in der Fußballgeschichte.</p>
+        <button class="watch-btn" onclick="openVideo('lWne8PjF_Co','Top 150 Goals – Shocking the World','Karriere-Compilation · Alle Vereine','150 der spektakulärsten Tore von Cristiano Ronaldo, die die Welt in Staunen versetzt haben – Freistöße, Fernschüsse, Kopfbälle und mehr.')"><i class="fas fa-play"></i> Video ansehen</button>
       </div>
       <div class="hl-card rv" style="transition-delay:.4s">
         <div class="hl-ico">🇵🇹</div>
         <div class="hl-num">1</div>
         <div class="hl-title">Europameister 2016</div>
         <p class="hl-desc">Als Kapitän führte er Portugal trotz früher Verletzung zum Europameistertitel – der größte Moment seiner Nationalmannschaftskarriere.</p>
+        <button class="watch-btn" onclick="openVideo('LU1e8MensJM','EM-Finale 2016 – Portugal vs. Frankreich','UEFA EURO 2016 · Paris · Stade de France','Das historische EM-Finale in Paris: Portugal 1:0 Frankreich. Ronaldo als Anführer, Trainer und emotionales Herz des Teams.')"><i class="fas fa-play"></i> Video ansehen</button>
       </div>
       <div class="hl-card rv" style="transition-delay:.5s">
         <span class="hl-badge">ELITE</span>
@@ -530,6 +558,7 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
         <div class="hl-num">5×</div>
         <div class="hl-title">Liga-Topscorer</div>
         <p class="hl-desc">Mehrfacher Torschützenkönig in Premier League, La Liga, Serie A und der Champions League – die Dominanz quer durch Europa.</p>
+        <button class="watch-btn" onclick="openVideo('zoNQMgu1Goc','Legendary Goals Compilation','Premier League · La Liga · Serie A · UCL','Ronaldos legendärste Tore in allen großen Ligen Europas – die Sammlung der Treffer, die ihn zum mehrfachen Torschützenkönig machten.')"><i class="fas fa-play"></i> Video ansehen</button>
       </div>
     </div>
   </div>
@@ -544,61 +573,67 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
       <div class="sec-line"></div>
     </div>
     <div class="gallery-grid">
-      <div class="gal-item rv">
+      <div class="gal-item rv" onclick="openVideo('LJvsGMS_NKM','Champions League – Bicycle Kick','UCL 2018 · Real Madrid vs. Juventus','Eines der schönsten Tore der CL-Geschichte: Ronaldos legendärer Fallrückzieher gegen Juventus in Turin – selbst die Juve-Fans applaudierten. Real Madrid gewann 3:0 und zog ins Halbfinale ein.')">
         <div class="gal-bg g1">
           <div class="gal-emoji">🏆</div>
           <div class="gal-lbl">CHAMPIONS LEAGUE</div>
         </div>
+        <div class="gal-play"><i class="fas fa-play"></i></div>
         <div class="gal-overlay">
           <div class="gal-title">Champions-League-Triumph</div>
           <div class="gal-year">2016 · Cardiff · Real Madrid</div>
         </div>
       </div>
-      <div class="gal-item rv" style="transition-delay:.1s">
+      <div class="gal-item rv" style="transition-delay:.1s" onclick="openVideo('TrPCZvEixlA','Manchester United – Top 20 Goals','2003–2022 · Old Trafford','Ronaldos beste Tore im roten Trikot von Manchester United – von seinem Debüt als 18-Jähriger bis zur emotionalen Rückkehr 2021. Spektakuläre Freistöße, Kopfbälle und Fernschüsse.')">
         <div class="gal-bg g2">
           <div class="gal-emoji">⚽</div>
           <div class="gal-lbl">OLD TRAFFORD</div>
         </div>
+        <div class="gal-play"><i class="fas fa-play"></i></div>
         <div class="gal-overlay">
           <div class="gal-title">Heimkehr zu Manchester</div>
           <div class="gal-year">2021 · Old Trafford · United</div>
         </div>
       </div>
-      <div class="gal-item rv" style="transition-delay:.2s">
+      <div class="gal-item rv" style="transition-delay:.2s" onclick="openVideo('LU1e8MensJM','EM-Finale 2016 – Portugal vs. Frankreich','UEFA EURO 2016 · Paris · Stade de France','Portugal gewinnt 1:0 gegen Frankreich im EM-Finale. Ronaldo verletzte sich früh, blieb aber als Coach und emotionaler Anführer am Spielfeldrand und führte sein Team zum historischen Titel.')">
         <div class="gal-bg g3">
           <div class="gal-emoji">🇵🇹</div>
           <div class="gal-lbl">EURO 2016</div>
         </div>
+        <div class="gal-play"><i class="fas fa-play"></i></div>
         <div class="gal-overlay">
           <div class="gal-title">Europameister Portugal</div>
           <div class="gal-year">2016 · Paris · Nationalheld</div>
         </div>
       </div>
-      <div class="gal-item rv" style="transition-delay:.3s">
+      <div class="gal-item rv" style="transition-delay:.3s" onclick="openVideo('ZCVacsj7rCs','Weltrekord – 136 Länderspieltore','Portugal · WM-Qualifikation','Ronaldo bricht den Weltrekord für die meisten Länderspieltore der Geschichte. Kein Spieler hat je mehr Tore für seine Nationalmannschaft erzielt. Ein Moment für die Ewigkeit.')">
         <div class="gal-bg g4">
           <div class="gal-emoji">🎯</div>
           <div class="gal-lbl">WELTREKORD</div>
         </div>
+        <div class="gal-play"><i class="fas fa-play"></i></div>
         <div class="gal-overlay">
           <div class="gal-title">136 Länderspieltore</div>
           <div class="gal-year">2023 · Weltrekord gebrochen</div>
         </div>
       </div>
-      <div class="gal-item rv" style="transition-delay:.4s">
+      <div class="gal-item rv" style="transition-delay:.4s" onclick="openVideo('lxD2MDw1g8s','The GOAT Legacy – Skills, Goals &amp; Moments','Karriere-Compilation · 2002–2024','Eine epische Zusammenfassung von Ronaldos gesamter Karriere: Weltklasse-Tore, unglaubliche Skills und die unvergesslichsten Momente – von Sporting Lissabon bis Al-Nassr.')">
         <div class="gal-bg g5">
           <div class="gal-emoji">⭐</div>
           <div class="gal-lbl">BALLON D'OR</div>
         </div>
+        <div class="gal-play"><i class="fas fa-play"></i></div>
         <div class="gal-overlay">
           <div class="gal-title">5× Weltfußballer</div>
           <div class="gal-year">2008–2017 · Fünffacher Gewinner</div>
         </div>
       </div>
-      <div class="gal-item rv" style="transition-delay:.5s">
+      <div class="gal-item rv" style="transition-delay:.5s" onclick="openVideo('jSX3srzq4P0','50+ Legendäre Tore','Karriere-Highlights · Alle Vereine','50 unvergessliche Tore aus Ronaldos gesamter Karriere – atemberaubende Freistöße, spektakuläre Fallrückzieher und entscheidende Treffer in den größten Spielen der Welt.')">
         <div class="gal-bg g6">
           <div class="gal-emoji">🌟</div>
           <div class="gal-lbl">AL-NASSR</div>
         </div>
+        <div class="gal-play"><i class="fas fa-play"></i></div>
         <div class="gal-overlay">
           <div class="gal-title">Neues Kapitel in Riad</div>
           <div class="gal-year">2023 · Saudi-Arabien</div>
@@ -659,6 +694,22 @@ footer{background:#040404;border-top:1px solid rgba(255,255,255,.04);padding:60p
       <button class="q-btn" onclick="prevQ()"><i class="fas fa-chevron-left"></i></button>
       <div class="q-dots" id="qDots"></div>
       <button class="q-btn" onclick="nextQ()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-bg" onclick="closeVideo()"></div>
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeVideo()"><i class="fas fa-times"></i></button>
+    <div class="modal-video">
+      <iframe id="modalIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="modal-info">
+      <div class="modal-tag" id="modalTag"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-desc" id="modalDesc"></div>
     </div>
   </div>
 </div>
@@ -752,6 +803,22 @@ function nextQ() { goQ((cur + 1) % total); resetTimer(); }
 function prevQ() { goQ((cur - 1 + total) % total); resetTimer(); }
 function resetTimer() { clearInterval(timer); timer = setInterval(nextQ, 5000); }
 timer = setInterval(nextQ, 5000);
+
+// VIDEO MODAL
+function openVideo(id, title, tag, desc) {
+  document.getElementById('modalIframe').src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalTag').textContent = tag;
+  document.getElementById('modalDesc').textContent = desc;
+  document.getElementById('videoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo() {
+  document.getElementById('videoModal').classList.remove('open');
+  document.getElementById('modalIframe').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
 
 // PARALLAX ORBS
 window.addEventListener('scroll', () => {
